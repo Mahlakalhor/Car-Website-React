@@ -5,6 +5,7 @@ import locationSvg from "../assets/media/location.svg";
 import arrowSvg from "../assets/media/arrow.svg";
 import { useEffect, useState } from "react";
 import axiosInstance from "../api/axios";
+import { motion } from "motion/react";
 
 interface Car {
   _id: string;
@@ -42,10 +43,23 @@ export const Featured = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 mt-18 ">
+      <motion.div
+        initial={{ opacity: 0, y: 14, scale: 0.985 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="grid grid-cols-1 gap-8 mt-18 "
+      >
         {cars.map((car) => (
-          <div
+          <motion.div
             key={car._id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+            }}
             className="group rounded-xl overflow-hidden shadow-lg transition-all cursor-pointer flex flex-col"
           >
             <div className="relative h-48 overflow-hidden ">
@@ -98,13 +112,22 @@ export const Featured = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-      <button className="flex items-center justify-center gap-2 px-6 py-2 border border-[#c4c7d2] hover:bg-gray-50 rounded-md mt-18 cursor-pointer">
+      </motion.div>
+      <motion.button
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{
+          type: "spring",
+          stiffness: 50,
+        }}
+        className="flex items-center justify-center gap-2 px-6 py-2 border border-[#c4c7d2] hover:bg-gray-50 rounded-md mt-18 cursor-pointer"
+      >
         Explore all cars
         <img alt="arrow" src={arrowSvg} />
-      </button>
+      </motion.button>
     </div>
   );
 };

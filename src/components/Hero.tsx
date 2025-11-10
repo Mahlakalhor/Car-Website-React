@@ -1,10 +1,25 @@
 import car from "../assets/media/car.png";
+import { motion } from "motion/react";
 
 export const Hero = () => {
   return (
     <div className="flex flex-col bg-[#F1F5F9] h-screen items-center justify-center gap-15">
-      <h1 className="text-4xl font-semibold ">Luxury Cars on Rent</h1>
-      <form className="bg-white flex flex-col items-start  p-6 rounded-lg w-80 shadow-xl gap-8">
+      <motion.h1
+        initial={{ y: 10, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, ease: "easeInOut" }}
+        className="text-4xl font-semibold "
+      >
+        Luxury Cars on Rent
+      </motion.h1>
+      <motion.form
+        initial={{ y: 10, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, ease: "easeInOut" }}
+        className="bg-white flex flex-col items-start  p-6 rounded-lg w-80 shadow-xl gap-8"
+      >
         <div>
           <select className="flex flex-col ">
             <option>PickUp Location</option>
@@ -62,8 +77,16 @@ export const Hero = () => {
             search
           </button>
         </div>
-      </form>
-      <img src={car} alt="car" className="w-[390px]" />
+      </motion.form>
+      <motion.img
+        initial={{ y: 10, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, ease: "easeInOut" }}
+        src={car}
+        alt="car"
+        className="w-[390px]"
+      />
     </div>
   );
 };
