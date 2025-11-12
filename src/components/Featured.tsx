@@ -31,10 +31,10 @@ export const Featured = () => {
   useEffect(() => {
     axiosInstance
       .get<{ success: boolean; cars: Car[] }>("/user/cars")
-      .then((res) => setCars(res.data.cars)); // فقط cars رو بگیر
+      .then((res) => setCars(res.data.cars));
   }, []);
   return (
-    <div className="flex flex-col h-screen items-center py-24 px-6">
+    <div className="flex flex-col  items-center py-24 px-6">
       <div className="flex flex-col justify-center items-center text-center ">
         <h1 className="text-4xl font-semibold  ">Featured Vehicles</h1>
         <p className="text-[#6a7282] text-sm mt-2 max-w-156s ">

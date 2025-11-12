@@ -5,8 +5,9 @@ import crossSvg from "../assets/media/cross.svg";
 import clsx from "clsx";
 import { motion } from "motion/react";
 import { Module } from "./Module";
+import { Link } from "react-router-dom";
 
-export const Header = () => {
+export const Header = ({ variant = "default" }) => {
   const [open, setOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
 
@@ -16,9 +17,12 @@ export const Header = () => {
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="w-full h-[65px] bg-[#F1F5F9] flex justify-between items-center px-6 border-b border-b-[#c4c7d2]"
+      className={`w-full h-[65px] flex justify-between items-center px-6 border-b border-b-gray-200 ${
+        variant === "cars" ? "bg-white" : "bg-[#F1F5F9]"
+      }`}
     >
       <img src={logo} alt="logo" />
+
       <button
         onClick={() => setOpen((prev) => !prev)}
         aria-label={open ? "Close menu" : "Open menu"}
@@ -38,19 +42,20 @@ export const Header = () => {
           }
         )}
       >
-        <ul className="flex flex-col gap-4 *:text-[16px] text-gray-600 text-start ">
-          <li>Home</li>
-          <li>Cars</li>
-          <li>My Bookings</li>
-          <li>List Cars</li>
-        </ul>
+        <nav className="flex flex-col gap-4 *:text-[16px] text-gray-600 text-start ">
+          <Link to="/">Home</Link>
+          <Link to="/cars">Cars</Link>
+          <Link to="/my-bookings">My Bookings</Link>
+        </nav>
+
         <button
           onClick={() => setShowLogin(true)}
-          className="mt-4 px-4 py-2 bg-[#2563eb] text-white rounded-lg cursor-pointer w-[104px] text-center "
+          className="mt-4 px-4 py-2 bg-[#2563eb] text-white rounded-lg cursor-pointer w-[104px] text-center"
         >
           Login
         </button>
       </div>
+
       {showLogin && <Module />}
     </motion.header>
   );

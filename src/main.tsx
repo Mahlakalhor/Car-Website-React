@@ -4,8 +4,9 @@ import "./index.css";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import {Home} from "./pages/Home";
-import {Cars} from "./pages/Cars";
 import {MyBooking} from "./pages/MyBooking";
+import { Cars } from "./pages/Cars";
+
 const router = createBrowserRouter([
   {
     path: "/",
