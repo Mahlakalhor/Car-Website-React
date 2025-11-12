@@ -10,7 +10,7 @@ export const Home = () => {
     <div className="flex flex-col ">
       <Header />
       <Hero />
-      <Featured />
+      <Featured limit={6} showExploreButton={true} />
       <Banner />
       <Customers />
       <Email />
