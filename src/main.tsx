@@ -7,6 +7,7 @@ import {Home} from "./pages/Home";
 import {MyBooking} from "./pages/MyBooking";
 import { Cars } from "./pages/Cars";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
