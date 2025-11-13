@@ -1,19 +1,33 @@
-export const AvailableCars = () => {
+interface AvailableCarsProps {
+  search: string;
+  onSearchChange: (value: string) => void;
+}
+
+export const AvailableCars = ({
+  search,
+  onSearchChange,
+}: AvailableCarsProps) => {
   return (
-    <section className="flex flex-col items-center py-20 bg-light max-md:px-4 bg-[#F1F5F9]">
+    <section className="flex flex-col items-center py-20 bg-[#F1F5F9] max-md:px-4">
       <div className="flex flex-col justify-center items-center text-center">
-        <h1 className="font-semibold text-4xl md:text-[40px]">
+        <h1 className="font-semibold text-3xl md:text-[40px] text-black">
           Available Cars
         </h1>
-        <p className="text-sm md:text-base text-gray-500/90 mt-2 max-w-156">
+        <p className="text-sm md:text-base text-gray-500/90 mt-2 max-w-[600px]">
           Browse our selection of premium vehicles available for your next
           adventure
         </p>
       </div>
 
-      <div className="flex items-center bg-white px-4 mt-6 max-w-140 w-full h-12 rounded-full shadow">
+      <div
+        className="
+          flex items-center bg-white px-4 mt-6 
+          max-w-[560px] w-full h-12 
+          rounded-full shadow-md
+        "
+      >
         <svg
-          className="w-4.5 h-4.5 mr-2"
+          className="w-5 h-5 mr-2"
           width="20"
           height="20"
           viewBox="0 0 20 20"
@@ -39,11 +53,13 @@ export const AvailableCars = () => {
         <input
           type="text"
           placeholder="Search by make, model, or features"
-          className="w-full h-full outline-none text-gray-500 text-sm md:text-base placeholder:text-gray-400"
+          className="w-full h-full outline-none text-gray-600 text-sm md:text-base placeholder:text-gray-400"
+          value={search}
+          onChange={(e) => onSearchChange(e.target.value)}
         />
 
         <svg
-          className="w-4.5 h-4.5 ml-2"
+          className="w-5 h-5 ml-2 cursor-pointer"
           width="20"
           height="20"
           viewBox="0 0 20 20"

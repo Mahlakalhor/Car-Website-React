@@ -124,3 +124,8 @@ export function CustomerCard({ name, location, img }: CustomerCardProps) {
     </div>
   );
 }
+export interface FeaturedProps {
+  limit?: number;
+  showExploreButton?: boolean;
+  search?: string;
+}

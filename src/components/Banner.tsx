@@ -13,7 +13,7 @@ export const Banner = () => {
       <div
         className="
           flex flex-col md:flex-row items-center justify-between
-          bg-gradient-to-r from-[#0558FE] to-[#A9CFFF]
+          bg-linear-to-r from-[#0558FE] to-[#A9CFFF]
           rounded-2xl overflow-hidden
           px-6 md:px-10 py-8 md:py-10
         "
@@ -41,7 +41,7 @@ export const Banner = () => {
           initial={{ x: 80, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         />
       </div>
     </motion.section>
