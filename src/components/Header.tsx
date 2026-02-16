@@ -11,9 +11,15 @@ type HeaderVariant = "default" | "cars";
 
 interface HeaderProps {
   variant?: HeaderVariant;
+  search?: string;
+  onSearchChange?: (v: string) => void;
 }
 
-export const Header = ({ variant = "default" }: HeaderProps) => {
+export const Header = ({
+  variant = "default",
+  search = "",
+  onSearchChange,
+}: HeaderProps) => {
   const [open, setOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
 
@@ -54,7 +60,7 @@ export const Header = ({ variant = "default" }: HeaderProps) => {
 
           variant === "cars" ? "bg-white" : "bg-[#F1F5F9]",
 
-          open ? "max-sm:translate-x-0" : "max-sm:translate-x-full"
+          open ? "max-sm:translate-x-0" : "max-sm:translate-x-full",
         )}
       >
         <nav className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-[14px] text-gray-600">
@@ -74,6 +80,8 @@ export const Header = ({ variant = "default" }: HeaderProps) => {
             className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500 text-sm"
             placeholder="Search cars"
             type="text"
+            value={search}
+            onChange={(e) => onSearchChange?.(e.target.value)}
           />
           <svg
             width="16"

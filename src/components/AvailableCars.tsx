@@ -1,11 +1,14 @@
 interface AvailableCarsProps {
   search: string;
   onSearchChange: (value: string) => void;
+
+  onOpenFilters: () => void; // ✅ اضافه شد
 }
 
 export const AvailableCars = ({
   search,
   onSearchChange,
+  onOpenFilters,
 }: AvailableCarsProps) => {
   return (
     <section className="flex flex-col items-center py-20 bg-[#F1F5F9] max-md:px-4">
@@ -58,22 +61,29 @@ export const AvailableCars = ({
           onChange={(e) => onSearchChange(e.target.value)}
         />
 
-        <svg
-          className="w-5 h-5 ml-2 cursor-pointer"
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <button
+          type="button"
+          onClick={onOpenFilters}
+          aria-label="Open filters"
+          className="ml-2 p-2 rounded-full hover:bg-gray-100 active:scale-95 transition"
         >
-          <path
-            d="M18.3332 2.5H1.6665L8.33317 10.3833V15.8333L11.6665 17.5V10.3833L18.3332 2.5Z"
-            stroke="#64748B"
-            strokeWidth="1.66667"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+          <svg
+            className="w-5 h-5"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18.3332 2.5H1.6665L8.33317 10.3833V15.8333L11.6665 17.5V10.3833L18.3332 2.5Z"
+              stroke="#64748B"
+              strokeWidth="1.66667"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </div>
     </section>
   );
